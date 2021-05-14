@@ -1,0 +1,28 @@
+{
+  "name": "nutralmedia",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack -p --progress --config webpack.config.build.js",
+    "development": "webpack serve --config webpack.config.development.js --progress",
+    "start": "npm run development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niels008/nutralmedia.git"
+  },
+  "author": "Niels de Bont",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niels008/nutralmedia/issues"
+  },
+  "homepage": "https://github.com/niels008/nutralmedia#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  }
+}
