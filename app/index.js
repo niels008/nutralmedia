@@ -1,5 +1,3 @@
-import math from 'utils/math'
+import placeholder from 'images/placeholder'
 
-if (IS_DEVELOPMENT) {
-  console.log('test')
-}
+console.log(placeholder)
