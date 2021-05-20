@@ -1,3 +1,3 @@
-import placeholder from 'images/placeholder'
+import placeholder from 'images/placeholder.png'
 
 console.log(placeholder)
