@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev'
-
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const dirApp = path.join(__dirname, 'app')
 const dirShared = path.join(__dirname, 'shared')
 const dirStyles = path.join(__dirname, 'styles')
@@ -31,6 +31,16 @@ module.exports = {
             IS_DEVELOPMENT
         }),
 
+        new ImageMinimizerPlugin({
+            minimizerOptions: {
+                plugins: [
+                    ['gifsicle', { interlaced: true }],
+                    ['jpegtran', { progressive: true }],
+                    ['optipng', { optimizationLevel: 5 }],
+                ],
+            },
+        }),
+
         new CopyWebpackPlugin({
             patterns: [
                 {
@@ -52,6 +62,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                type: 'asset',
             },
 
             {
