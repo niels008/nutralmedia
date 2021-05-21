@@ -36,7 +36,7 @@ module.exports = {
                 plugins: [
                     ['gifsicle', { interlaced: true }],
                     ['jpegtran', { progressive: true }],
-                    ['optipng', { optimizationLevel: 5 }],
+                    ['optipng', { optimizationLevel: 8 }],
                 ],
             },
         }),
@@ -99,6 +99,20 @@ module.exports = {
                         return '[hash].[ext]'
                     }
                 }
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg|webp)$/i,
+                use: [
+                    {
+                        loader: ImageMinimizerPlugin.loader,
+                        options: {
+                            severityError: 'warning',
+                            minimizerOptions: {
+                                plugins: ['gifsicle'],
+                            },
+                        },
+                    },
+                ],
             }
         ]
     }
