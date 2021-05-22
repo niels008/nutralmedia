@@ -105,15 +105,23 @@ module.exports = {
                 use: [
                     {
                         loader: ImageMinimizerPlugin.loader,
-                        options: {
-                            severityError: 'warning',
-                            minimizerOptions: {
-                                plugins: ['gifsicle'],
-                            },
-                        },
                     },
                 ],
-            }
+            },
+
+            {
+                test: /\.(glsl|frag|vert)$/,
+                loader: 'raw-loader',
+                exclude: /node_modules/
+            },
+
+            {
+                test: /\.(glsl|frag|vert)$/,
+                loader: 'glslify-loader',
+                exclude: /node_modules/
+            },
+
+
         ]
     }
 
