@@ -33,6 +33,8 @@ module.exports = {
 
     new ImageMinimizerPlugin({
       minimizerOptions: {
+        // Lossless optimization with custom option
+        // Feel free to experiment with options for better result for you
         plugins: [
           ['gifsicle', { interlaced: true }],
           ['jpegtran', { progressive: true }],
@@ -104,7 +106,13 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg|webp)$/i,
         use: [
           {
-            loader: ImageMinimizerPlugin.loader
+            loader: ImageMinimizerPlugin.loader,
+            options: {
+              severityError: 'warning',
+              minimizerOptions: {
+                plugins: ['gifsicle']
+              }
+            }
           }
         ]
       },
