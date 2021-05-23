@@ -4,6 +4,7 @@ const path = require('path')
 const port = 1337
 
 app.set('views', path.join(__dirname, 'app'))
+app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
   res.render('index')
