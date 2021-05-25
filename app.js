@@ -18,6 +18,10 @@ app.get('/about', (req, res) => {
   res.render('pages/about')
 })
 
+app.get('/detail/:uid', (req, res) => {
+  res.render('pages/detail')
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
