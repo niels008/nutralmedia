@@ -43,14 +43,13 @@ app.get('/about', async (req, res) => {
   initApi(req).then(api => {
     api.query(Prismic.Predicates.any('document.type', ['about', 'meta'])).then((response) => {
       const { results } = response
-      const [meta, about] = results
-      console.log(results)
+      const [about, meta] = results
       console.log(`
       meta
       data
       here
       `)
-      console.log(meta)
+      console.log(results)
 
       res.render('pages/about', {
         about,
