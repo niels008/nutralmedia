@@ -63,3 +63,7 @@ app.get('/detail/:uid', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+const currentVideoTime = 'Current time of video = -4,44'
+
+console.log(currentVideoTime)
