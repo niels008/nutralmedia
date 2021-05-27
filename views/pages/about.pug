@@ -8,5 +8,7 @@ block content
     .about__wrapper
       section.about__gallery
         .about__gallery__wrapper
-          each
+          each media in about.data.gallery
+            figure.about__gallery__media
+              img.about__gallery__media__image(alt=media.image.alt src=media.image.url)
 
