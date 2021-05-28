@@ -42,7 +42,7 @@ app.get('/about', async (req, res) => {
   const meta = await api.getSingle('meta')
   const about = await api.getSingle('about')
 
-  console.log(meta)
+  console.log(meta.data)
 
   res.render('pages/about', {
     about,
