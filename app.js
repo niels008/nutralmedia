@@ -34,7 +34,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.get('/', async (req, res) => {
-  res.render('pages/home')
+  const api = await initApi(req)
+  const meta = await api.getSingle('meta')
+
+  res.render('pages/home', {
+    meta
+  })
 })
 
 app.get('/about', async (req, res) => {
@@ -42,7 +47,11 @@ app.get('/about', async (req, res) => {
   const meta = await api.getSingle('meta')
   const about = await api.getSingle('about')
 
-  console.log(meta.data)
+  console.log(about)
+  console.log('-------start---------about.data.body--------start---------')
+  console.log(about.data.body)
+  console.log('-------start---------meta--------start---------')
+  console.log(meta)
 
   res.render('pages/about', {
     about,
