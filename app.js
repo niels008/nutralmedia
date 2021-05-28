@@ -1,6 +1,8 @@
 require('dotenv').config()
 
 const express = require('express')
+const errorHandler = require('errorhandler')
+
 const app = express()
 const path = require('path')
 const port = 3000
@@ -18,6 +20,8 @@ const initApi = req => {
 const handleLinkResolver = doc => {
   return '/'
 }
+
+app.use(errorHandler())
 
 app.use((req, res, next) => {
   res.locals.ctx = {
@@ -54,8 +58,8 @@ app.get('/about', async (req, res) => {
   console.log(meta)
 
   res.render('pages/about', {
-    about,
-    meta
+    meta,
+    about
   })
 })
 
@@ -64,7 +68,16 @@ app.get('/collections/', (req, res) => {
 })
 
 app.get('/detail/:uid', async (req, res) => {
-  res.render('pages/detail')
+  const api = await initApi(req)
+  const meta = await api.getSingle('meta')
+  const product = await api.getByUID('product', req.params.uid)
+
+  console.log(product)
+
+  res.render('pages/detail', {
+    meta,
+    product
+  })
 })
 
 app.listen(port, () => {
