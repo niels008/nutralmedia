@@ -38,23 +38,15 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/about', async (req, res) => {
-  initApi(req).then(api => {
-    api.query(Prismic.Predicates.any('document.type', ['about', 'meta'])).then(response => {
-      const { results } = response
-      const [about, meta] = results
-      console.log(results)
+  const api = await initApi(req)
+  const meta = await api.getSingle('meta')
+  const about = await api.getSingle('about')
 
-      console.log(about.data.gallery)
+  console.log(meta)
 
-      about.data.gallery.forEach(media => {
-        console.log(media)
-      })
-
-      res.render('pages/about', {
-        about,
-        meta
-      })
-    })
+  res.render('pages/about', {
+    about,
+    meta
   })
 })
 
