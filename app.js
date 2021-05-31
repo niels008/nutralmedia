@@ -1,11 +1,20 @@
 require('dotenv').config()
 
+const logger = require('morgan')
 const express = require('express')
 const errorHandler = require('errorhandler')
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 const path = require('path')
 const app = express()
 const port = 3000
+
+app.use(logger('dev'))
+app.use(errorHandler())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(methodOverride())
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
@@ -24,14 +33,20 @@ const handleLinkResolver = doc => {
   return '/'
 }
 
-app.use(errorHandler())
-
 app.use((req, res, next) => {
-  res.locals.ctx = {
-    endpoint: process.env.PRISMIC_ENDPOINT,
-    linkResolver: handleLinkResolver
-  }
+  // res.locals.ctx = {
+  //   endpoint: process.env.PRISMIC_ENDPOINT,
+  //   linkResolver: handleLinkResolver
+  // }
+
+  res.locals.Links = handleLinkResolver
+
   res.locals.PrismicDOM = PrismicDOM
+
+  res.locals.Numbers = index => {
+    return index === 0 ? 'One' : index === 1 ? 'Two' : index === 2 ? 'Three' : index === 3 ? 'Four' : ''
+  }
+
   next()
 })
 
@@ -48,41 +63,44 @@ app.get('/about', async (req, res) => {
   const api = await initApi(req)
   const meta = await api.getSingle('meta')
   const about = await api.getSingle('about')
+  const preloader = await api.getSingle('preloader')
 
   res.render('pages/about', {
+    about,
     meta,
-    about
+    preloader
   })
 })
 
 app.get('/collections/', async (req, res) => {
   const api = await initApi(req)
   const meta = await api.getSingle('meta')
+  const home = await api.getSingle('home')
+  const preloader = await api.getSingle('preloader')
+
   const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collection'), {
     fetchLinks: 'product.image'
   })
 
-  // console.log(collections)
-
-  collections.forEach(collection => {
-    console.log(collection.data.products[0].data)
-  })
-
   res.render('pages/collections', {
+    collections,
+    home,
     meta,
-    collections
+    preloader
   })
 })
 
 app.get('/detail/:uid', async (req, res) => {
   const api = await initApi(req)
   const meta = await api.getSingle('meta')
+  const preloader = await api.getSingle('preloader')
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collection.title'
   })
 
   res.render('pages/detail', {
     meta,
+    preloader,
     product
   })
 })
