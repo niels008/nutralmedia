@@ -131,3 +131,5 @@ app.get('/detail/:uid', async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+console.log('current video time: -18:11')
