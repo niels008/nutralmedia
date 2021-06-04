@@ -1,51 +1,60 @@
-.collections__wrapper {
+.collections {
+  @extend %cover;
 
+  color: $color-quarter-spanish-white;
+  background: $color-quicksand;
+}
+
+.collections__wrapper {
+  @extend %cover;
+
+  overflow: hidden;
 }
 
 .collections__titles {
-
+  align-items: center;
+  display: flex;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  top: 50%;
 }
 
 .collections__titles__label {
+  @extend %description-12;
 
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(90deg);
 }
 
 .collections__titles__title {
-
+  @extend %title-200;
 }
 
 .collections__gallery {
-
 }
 
 .collections__gallery__wrapper {
-
 }
 
 .collections__gallery__media__link {
-
 }
 
 .collections__gallery__media {
-
 }
 
 .collections__gallery__media__image {
-
 }
 
 .collections__content {
-
 }
 
 .collections__article {
-
 }
 
 .collections__article__title {
-
 }
 
 .collections__article__description {
-
 }
