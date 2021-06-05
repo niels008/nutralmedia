@@ -49,22 +49,43 @@
 }
 
 .collections__gallery__media__link {
+  display: block;
+  margin: 0 5.3rem;
 }
 
 .collections__gallery__media {
+  height: 63.1rem;
+  width: 44.7rem;
+  position: relative;
 }
 
 .collections__gallery__media__image {
+  @extend %cover;
+
+  object-fit: cover;
 }
 
 .collections__content {
+  @extend %cover;
 }
 
 .collections__article {
+  position: absolute;
+  left: 8rem;
+  opacity: 0;
+  bottom: 8rem;
+
+  &--active {
+    opacity: 1;
+  }
 }
 
 .collections__article__title {
+  @extend %title-60;
 }
 
 .collections__article__description {
+  @extend %description-16;
+
+  max-width: 44rem;
 }
