@@ -23,6 +23,8 @@
 .collections__titles__label {
   @extend %description-12;
 
+  letter-spacing: 0.1rem;
+  margin: 0 3rem;
   text-align: center;
   text-transform: uppercase;
   transform: rotate(90deg);
@@ -30,12 +32,20 @@
 
 .collections__titles__title {
   @extend %title-200;
+
+  padding-top: 2rem;
 }
 
 .collections__gallery {
+  @extend %cover;
 }
 
 .collections__gallery__wrapper {
+  display: flex;
+  align-items: center;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
 }
 
 .collections__gallery__media__link {
