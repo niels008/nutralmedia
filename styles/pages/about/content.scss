@@ -11,6 +11,14 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  &:nth-child(5) {
+    justify-content: flex-end;
+  }
+
+  &:nth-child(8) {
+    justify-content: flex-start;
+  }
 }
 
 .about__content__wrapper {
@@ -40,11 +48,30 @@
 }
 
 .about__content__media {
+  position: relative;
+
   .about__content:nth-child(3) & {
     height: 80.8rem;
-    position: relative;
     width: 53.8rem;
-    margin-left: 17.8rem;
+    margin-left: 18rem;
+  }
+
+  .about__content:nth-child(5) & {
+    height: 60rem;
+    width: 96rem;
+    margin-left: 18rem;
+  }
+
+  .about__content:nth-child(8) & {
+    width: 84.2rem;
+    height: 52rem;
+    margin-left: 18rem;
+  }
+
+  .about__content:nth-child(9) & {
+    width: 60.8rem;
+    height: 85.8rem;
+    margin-left: 22rem;
   }
 }
 

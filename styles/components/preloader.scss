@@ -6,10 +6,12 @@
   color: $color-quarter-spanish-white;
   display: none;
   text-align: center;
+  z-index: z("preloader");
 }
 
 .preloader__text {
   @extend %title-53;
+
   max-width: 66rem;
 }
 
