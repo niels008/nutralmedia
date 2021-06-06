@@ -132,4 +132,4 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
 
-console.log('current video time: -1:51:58')
+console.log('current video time: -1:41:18')
