@@ -1,6 +1,5 @@
 .about__highlight {
   margin: 20rem 0;
-  position: relative;
 
   &:first-child {
     margin-top: 0;
@@ -12,16 +11,52 @@
 }
 
 .about__highlight__wrapper {
+  margin: auto;
+  height: 104rem;
+  position: relative;
+  width: 144rem;
 }
 
 .about__highlight__label {
+  @extend %description-12;
+
+  position: absolute;
+  left: 50%;
+  transform: translateY(-50%);
+  width: 9.6rem;
+  text-transform: uppercase;
+  text-align: center;
+  top: 8rem;
+  letter-spacing: 0.1rem;
 }
 
 .about__highlight_title {
+  @extend %title-200;
+
+  transform: translate(-50%, -50%) rotate(-90deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .about__highlight__media {
+  position: absolute;
+  height: 76rem;
+  width: 54rem;
+
+  &:first-child {
+    left: 0;
+    top: 0;
+  }
+
+  &:last-child {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .about__highlight__media_image {
+  @extend %cover;
+
+  object-fit: cover;
 }
