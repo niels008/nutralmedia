@@ -14,35 +14,46 @@
   margin: auto;
   height: 104rem;
   position: relative;
-  width: 144rem;
+  width: 140rem;
+
+  .about__highlight:nth-child(5) & {
+    width: 104rem;
+  }
 }
 
 .about__highlight__label {
   @extend %description-12;
 
-  position: absolute;
   left: 50%;
-  transform: translateY(-50%);
-  width: 9.6rem;
+  letter-spacing: 0.1rem;
+  top: 8rem;
+  position: absolute;
+  transform: translate(-50%, -50%);
   text-transform: uppercase;
   text-align: center;
-  top: 8rem;
-  letter-spacing: 0.1rem;
+  width: 9.6rem;
 }
 
-.about__highlight_title {
+.about__highlight__title {
   @extend %title-200;
 
-  transform: translate(-50%, -50%) rotate(-90deg);
+  left: 50%;
+  padding-bottom: 2.5rem;
   position: absolute;
   top: 50%;
-  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 .about__highlight__media {
   position: absolute;
   height: 76rem;
   width: 54rem;
+
+  .about__highlight:nth-child(4) & {
+    width: 54rem;
+    height: 76rem;
+    position: absolute;
+  }
 
   &:first-child {
     left: 0;
