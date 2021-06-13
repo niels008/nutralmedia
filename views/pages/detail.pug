@@ -18,7 +18,10 @@ block content
           .detail__information__highlights
             each highlight in product.data.highlights
               p.detail__information__highlight
-                svg.detail__information__highlight__icon
+                svg.detail__information__highlight__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40")
+                  path(fill="none" stroke="currentColor" d="M20 40C8.94 40 0 31.06 0 20C0 8.94 8.94 0 20 0C31.06 0 40 8.94 40 20C40 31.06 31.06 40 20 40Z")
+                  path(stroke="none" fill="currentCollor" d="M24.27 9.87L21.51 18.46L30.22 15.83L22.07 19.97L30.22 24.23L21.51 21.41L24.33 30.32L20.06 21.98L15.92 30.13L18.56 21.41L9.96 24.17L18.12 19.97L9.78 15.64L18.56 18.46L15.74 9.68L20.06 18.02L24.27 9.87Z")
+
                   use(xlink:href=`sprite-${highlight.highlights_icon.toLowerCase()}`)
 
                 span.detail__information__highlight__text!=highlight.highlights_text.replace(/\n/, '<br>')
@@ -30,3 +33,7 @@ block content
                 span.detail__information__item__description=item.informations_description
 
           a.detail__information__link(href=product.data.link_url.url target="_blank")=product.data.link_text
+
+    button.detail__button Close
+      svg.detail__button__icon(xmlns="http://www.w3.org/2000/svg" viewBox="0 -0.5 122 62")
+        path(stroke="currentColor" fill="none" d="M 63.00,60.00 C 28.71,60.00 1.00,46.59 1.00,30.00 1.00,13.41 28.71,0.00 63.00,0.00 97.29,0.00 125.00,13.41 125.00,30.00 125.00,46.59 97.29,60.00 63.00,60.00 Z")
