@@ -118,6 +118,7 @@ app.get('/collections/', async (req, res) => {
 app.get('/detail/:uid', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
+
   const product = await api.getByUID('product', req.params.uid, {
     fetchLinks: 'collection.title'
   })
@@ -132,4 +133,4 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
 
-console.log('current video time: -1:00:50')
+console.log('Tips and Tricks of exporting assets from XD and using Pixel Perfect approach to implement CSS in your project: -28:01')

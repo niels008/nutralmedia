@@ -19,6 +19,16 @@
   &:nth-child(8) {
     justify-content: flex-start;
   }
+
+  @include media("<phone") {
+    &:nth-child(5) {
+      justify-content: flex-end;
+    }
+
+    &:nth-child(8) {
+      justify-content: flex-start;
+    }
+  }
 }
 
 .about__content__wrapper {
@@ -27,10 +37,28 @@
   .about__content--right & {
     flex-direction: row-reverse;
   }
+
+  @include media("<phone") {
+    .about__content:nth-child(3) & {
+      flex-direction: column-reverse;
+    }
+
+    .about__content:nth-child(5) & {
+      flex-direction: column;
+    }
+  }
 }
 
 .about__content__box {
   display: flex;
+
+  @include media("<=phone") {
+    width: 60.9rem;
+
+    .about__content:nth-child(3) & {
+      margin-top: 10rem;
+    }
+  }
 }
 
 .about__content__label {
@@ -38,12 +66,22 @@
 
   text-transform: uppercase;
   width: 18rem;
+
+  @include media("<=phone") {
+    width: 15rem;
+    padding-right: 2.5rem;
+  }
 }
 
 .about__content__description {
   width: 36.2rem;
+
   p:not(:first-child) {
     margin-top: 2.5rem;
+  }
+
+  @include media("<=phone") {
+    width: calc(100% - 15rem);
   }
 }
 
@@ -72,6 +110,14 @@
     width: 60.8rem;
     height: 85.8rem;
     margin-left: 22rem;
+  }
+
+  @include media("<=phone") {
+    .about__content:nth-child(3) & {
+      height: 91.4rem;
+      margin-left: 0;
+      width: 60.9rem;
+    }
   }
 }
 
